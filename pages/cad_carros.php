@@ -1,4 +1,18 @@
- <?php include 'navbar.php'; ?>
+ <?php include 'navbar.php';
+ include  "../processa/conecta.php";
+
+
+  $sql = $mysqli->prepare('select id,nome from clientes');
+  $sql->execute();
+  $sql->bind_result($id,$nome); 
+  $sql->store_result();
+  $sql2 = $mysqli->prepare('select id,marca,modelo,placa,ano from carros');
+  $sql2->execute();
+  $sql2->bind_result($id,$marca,$modelo,$placa,$ano); 
+  $sql2->store_result();
+
+
+  ?>
 
  <div class="row">
   <div class="col-lg-12">
@@ -18,6 +32,7 @@
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home">
       <div class="row">
+        <form id='carros'
         <div class="col-lg-12">
           <div class="panel panel-default">
 
@@ -26,26 +41,23 @@
                 <div class="col-lg-12">
                   <div class="col-lg-6">
                     <div class="form-group">
-
-                      
-                      <label>Selecione o proprietário</label>
-                      <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                       <label>Proprietário</label>
+                     <select id='combo_proprietario' name='proprietario' class="form-control">
+                        <option>Selecione o proprietário</option>
+                        <?php while ($sql->fetch()){
+                          echo "<option value='$id'>$nome</option>
+                          ";
+                          }?>
                       </select>
-                      
 
                       <label>Marca</label>
-                      <input class="form-control">
+                      <input id="marca" name="marca" class="form-control">
                       <label>Modelo</label>
-                      <input class="form-control">
+                      <input id="modelo" name="modelo" class="form-control">
                       <label>Versão</label>
-                      <input class="form-control">
+                      <input id="versao" name="versao" class="form-control">
                       <label>Placa</label>
-                      <input class="form-control">
+                      <input id="placa" name="placa" class="form-control">
 
 
                     </div>
@@ -56,13 +68,13 @@
 
                     <div class="form-group">
                       <label>Ano</label>
-                      <input class="form-control">
+                      <input id="ano" name="ano" class="form-control">
                       <label>Ano/modelo</label>
-                      <input class="form-control">
+                      <input id="ano_modelo" name="ano_modelo" class="form-control">
                       <label>Tipo de combustivel</label>
-                      <input class="form-control">
+                      <input id="tp_combustivel" name="tp_combustivel" class="form-control">
                       <label>Cor</label>
-                      <input class="form-control">
+                      <input id="cor" name="cor" class="form-control">
 
                     </div>
                   </div>
@@ -73,13 +85,14 @@
 
        
           </div>
-
-     <button type="button" class="btn btn-default btn-lg btn-block">Cadastrar</button>
-
+    <input id="funcao" name='funcao' type="hidden" value="cad_carros" >
+    <div class='col-lg-12' id='resultado'></div>
+     <button type="submit" id='cad_carros' class="btn btn-default btn-lg btn-block">Cadastrar</button>
+</form>
         </div>
 
       </div>
-    </div>
+   
 
     <div class="tab-pane fade" id="profile">
 
@@ -91,56 +104,47 @@
               Lista de carros
             </div>
             <div class="panel-body">
+
+              <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Digite a placa do carro">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
+                     <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Celular</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="odd gradeX">
-                    <td>Trident</td>
-                    <td>Internet Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">
+               <tbody>
 
-                      <a href="edit_carros.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                      
+                  <?php while ($sql2->fetch()){
+                    echo " <tr class='odd gradeX'>
+                    <td>$marca</td>
+                    <td>$modelo</td>
+                    <td>$placa</td>
+                    <td>$ano</td>
+                    <td><a href='edit_clientes.php'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
+                    <a href='car_cli.php'><i class='fa   fa-car    fa-fw'></i>Ver carros</a></td>
+                    </tr>
+                    ";
+                  }?>
+              
 
-                    </td>
-                  </tr>
-                  <tr class="even gradeC">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">          
-                      <a href="edit_carros.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                      
 
-                    </td>
-                  </tr>
-                  <tr class="odd gradeA">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.5</td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
-                    <td class="center">          
-                      <a href="edit_carros.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
 
-                      
-                    </td>
-                  </tr>
 
-                </tbody>
+              </tbody>
               </table>
               <!-- /.table-responsive -->
-
+              
             </div>
             <!-- /.panel-body -->
           </div>

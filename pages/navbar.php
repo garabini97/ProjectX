@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
+
 <head>
 
     <meta charset="utf-8">
@@ -39,17 +41,14 @@
     <![endif]-->
 
 
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-    <script src="../vendor/raphael/raphael.min.js"></script>
-    <script src="../vendor/morrisjs/morris.min.js"></script>
-    <script src="../data/morris-data.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
-       <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
-
+    <script src="../js/ajax.js"></script>
 
 
 </head>

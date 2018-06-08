@@ -17,6 +17,7 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home">
+      <form id='cad_item'>
       <div class="row">
         <div class="col-lg-12">
           <div class="panel panel-default">
@@ -27,25 +28,11 @@
                   <div class="col-lg-6">
                     <div class="form-group">
 
-                      
-                      <label>Selecione a categoria</label>
-                      <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                      
-
-                      <label>Marca</label>
-                      <input class="form-control">
-                      <label>Modelo</label>
-                      <input class="form-control">
+                     
                       <label>Descrição</label>
-                      <input class="form-control">
+                      <input id="descr" name="descricao" class="form-control">
                       <label>Valor</label>
-                      <input class="form-control">
+                      <input id="valor" name="valor" class="form-control">
 
 
                     </div>
@@ -60,12 +47,16 @@
        
           </div>
 
-     <button type="button" class="btn btn-default btn-lg btn-block">Cadastrar</button>
+      <div class='col-lg-12' id='resultado'></div>
+            <button id="submit_item" type="submit" class="btn btn-default btn-lg btn-block">Cadastrar</button>
+            <input id="funcao" name='funcao' type="hidden" value="cad_item" >
 
         </div>
 
       </div>
+      </form>
     </div>
+
 
     <div class="tab-pane fade" id="profile">
 

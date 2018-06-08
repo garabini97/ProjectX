@@ -1,5 +1,14 @@
- <?php include 'navbar.php'; ?>
+ <?php include 'navbar.php';
+ include  "../processa/conecta.php";
 
+
+ $sql = $mysqli->prepare('select nome,email,telefone,celular from usuarios limit 10');
+ $sql->execute();
+ $sql->bind_result($nome,$email,$telefone,$celular); 
+ $sql->store_result();
+
+
+ ?>
  <div class="row">
   <div class="col-lg-12">
     <h3 class="page-header">Controle de usuários</h3>
@@ -17,7 +26,9 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home">
+      <form id="usuario">
       <div class="row">
+        
         <div class="col-lg-6">
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -28,16 +39,16 @@
                 <div class="col-lg-12">
                   <div class="form-group">
 
-                    <label>Cpf</label>
-                    <input class="form-control">
-                    <label>Nome</label>
-                    <input class="form-control">
-                    <label>Login</label>
-                    <input class="form-control">
-                    <label>Senha</label>
-                    <input class="form-control">
-                    <label>Confirme a senha</label>
-                    <input class="form-control">
+                     <label>Cpf</label>
+                      <input id="cpf" name="cpf" class="form-control">
+                      <label>Nome</label>
+                      <input id="nome" name="nome" class="form-control">
+                      <label>Login</label>
+                      <input id="login" name="login" class="form-control">
+                      <label>Senha</label>
+                      <input id="senha" name="senha" class="form-control">
+                      <label>Confirme a senha</label>
+                      <input id="c_senha" name="c_senha" class="form-control">
 
 
                   </div>
@@ -62,13 +73,13 @@
                 <div class="col-lg-12">
 
                   <div class="form-group">
-                    <label>Email</label>
-                    <input class="form-control"> 
-                    <label>Telefone</label>
-                    <input class="form-control"> 
-                    <label>Celular</label>
-                    <input class="form-control"> 
-
+                      <label>Email</label>
+                      <input id="email" name="email" class="form-control"> 
+                      <label>Telefone</label>
+                      <input id="telefone" name="telefone" class="form-control"> 
+                      <label>Celular</label>
+                      <input id="celular" name="celular" class="form-control"> 
+                      
                   </div>
                 </div>
 
@@ -76,17 +87,15 @@
               </div>
             </div>
             
+            </div>
           </div>
-             
+            <div class='col-lg-12' id='resultado'></div>
+            <button id="submit_usuario" type="submit" class="btn btn-default btn-lg btn-block">Cadastrar</button>
+            <input id="funcao" name='funcao' type="hidden" value="cad_usuario" >
+   </div>
 
-        </div>
-
-
-<button type="button" class="btn btn-default btn-lg btn-block">Cadastrar</button>
-
-      </div>
-    
-    </div>
+ </form>
+</div>
 
     <div class="tab-pane fade" id="profile">
 
@@ -98,52 +107,44 @@
               Lista de usuários
             </div>
             <div class="panel-body">
+
+              <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Digite o nome do usuário">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
+                     <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Celular</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="odd gradeX">
-                    <td>Trident</td>
-                    <td>Internet Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">
+               <tbody>
 
-                     <a href="edit_usuarios.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                       
+                  <?php while ($sql->fetch()){
+                    echo " <tr class='odd gradeX'>
+                    <td>$nome</td>
+                    <td>$email</td>
+                    <td>$telefone</td>
+                    <td>$celular</td>
+                    <td><a href='edit_clientes.php'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
+                    <a href='car_cli.php'><i class='fa   fa-car    fa-fw'></i>Ver carros</a></td>
+                    </tr>
+                    ";
+                  }?>
+              
 
-                    </td>
-                  </tr>
-                  <tr class="even gradeC">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">          
-                    <a href="edit_usuarios.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                       
 
-                    </td>
-                  </tr>
-                  <tr class="odd gradeA">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.5</td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
-                    <td class="center">          
-                     <a href="edit_usuarios.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                       
-                    </td>
-                  </tr>
-                  
-                </tbody>
+
+
+              </tbody>
               </table>
               <!-- /.table-responsive -->
               
