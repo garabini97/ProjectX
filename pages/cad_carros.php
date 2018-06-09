@@ -116,10 +116,10 @@
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                     <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Celular</th>
+                     <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Placa</th>
+                    <th>Ano</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -131,8 +131,8 @@
                     <td>$modelo</td>
                     <td>$placa</td>
                     <td>$ano</td>
-                    <td><a href='edit_clientes.php'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
-                    <a href='car_cli.php'><i class='fa   fa-car    fa-fw'></i>Ver carros</a></td>
+                    <td><a href='edit_carros.php?id=$id'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
+                  
                     </tr>
                     ";
                   }?>

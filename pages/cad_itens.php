@@ -1,4 +1,14 @@
- <?php include 'navbar.php'; ?>
+ <?php include 'navbar.php';
+ include  "../processa/conecta.php";
+
+
+ $sql = $mysqli->prepare('select id,descricao,valor from itens limit 10');
+ $sql->execute();
+ $sql->bind_result($id,$descricao,$valor); 
+ $sql->store_result();
+
+
+ ?>
 
  <div class="row">
   <div class="col-lg-12">
@@ -68,53 +78,43 @@
               Lista de itens
             </div>
             <div class="panel-body">
+                <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Digite o nome do cliente">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
+                    <th>Id</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
+
                 <tbody>
-                  <tr class="odd gradeX">
-                    <td>Trident</td>
-                    <td>Internet Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">
 
-                      <a href="edit_itens.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                      
+                  <?php while ($sql->fetch()){
+                    echo " <tr class='odd gradeX'>
+                    <td>$id</td>
+                    <td>$descricao</td>
+                    <td>$valor</td>
+                    <td><a href='edit_itens.php?id=$id'><i class='fa  fa-pencil    fa-fw'></i>Editar</a></
+                    
+                    </tr>
+                    ";
+                  }?>
+              
 
-                    </td>
-                  </tr>
-                  <tr class="even gradeC">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">          
-                      <a href="edit_itens.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                      
 
-                    </td>
-                  </tr>
-                  <tr class="odd gradeA">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.5</td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
-                    <td class="center">          
-                      <a href="edit_itens.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
 
-                      
-                    </td>
-                  </tr>
 
-                </tbody>
+              </tbody>
               </table>
               <!-- /.table-responsive -->
 

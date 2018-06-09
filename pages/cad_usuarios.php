@@ -2,9 +2,9 @@
  include  "../processa/conecta.php";
 
 
- $sql = $mysqli->prepare('select nome,email,telefone,celular from usuarios limit 10');
+ $sql = $mysqli->prepare('select id,nome,email,telefone,celular from usuarios limit 10');
  $sql->execute();
- $sql->bind_result($nome,$email,$telefone,$celular); 
+ $sql->bind_result($id,$nome,$email,$telefone,$celular); 
  $sql->store_result();
 
 
@@ -134,8 +134,8 @@
                     <td>$email</td>
                     <td>$telefone</td>
                     <td>$celular</td>
-                    <td><a href='edit_clientes.php'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
-                    <a href='car_cli.php'><i class='fa   fa-car    fa-fw'></i>Ver carros</a></td>
+                    <td><a href='edit_usuarios.php?id=$id'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
+                    </td>
                     </tr>
                     ";
                   }?>
