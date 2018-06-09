@@ -5,12 +5,12 @@
  $sql = $mysqli->prepare('select id,nome from clientes limit 10');
  $sql->execute();
  $sql->bind_result($id,$descricao); 
- $sql->fetch();
-$sql->close();
+$sql->store_result();
 
- $sql1 = $mysqli->prepare('select id_usuarios,descricao,data_cadastro,data_lembrete from lembretes limit 10');
+
+ $sql1 = $mysqli->prepare('select id,id_usuarios,descricao,data_cadastro,data_lembrete from lembretes limit 10');
  $sql1->execute();
- $sql1->bind_result($id_usuarios,$descricao,$data_cadastro,$data_lembrete); 
+ $sql1->bind_result($id_lembrete,$id_usuarios,$descricao,$data_cadastro,$data_lembrete); 
  $sql1->store_result();
 
 
@@ -44,7 +44,7 @@ $sql->close();
                     <div class="form-group">
 
                        <label>Data</label>
-                      <input type="date" id="data" name="data" class="form-control">
+                      <input type="datetime-local" id="data" name="data" class="form-control">
 	
                       <label>Selecione o destinatário</label>
                      <select id='combo_destinatario' name='combo_destinatario' class="form-control">
@@ -80,8 +80,9 @@ $sql->close();
         </div>
 
       </div>
+      </form>
     </div>
-  </form>
+  
 
     <div class="tab-pane fade" id="profile">
 
@@ -120,7 +121,7 @@ $sql->close();
                     <td>$descricao</td>
                     <td>$data_cadastro</td>
                     <td>$data_lembrete</td>
-                    <td><a href='edit_lembretes.php?id=$id'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
+                    <td><a href='edit_lembretes.php?id=$id_lembrete'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
                   
                     </tr>
                     ";

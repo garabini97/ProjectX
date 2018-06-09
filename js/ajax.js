@@ -464,7 +464,191 @@ e.preventDefault();
 
     });
 
+$('#submit_edit_lem').click(function(){
 
+        $('form#lembrete').off();
+        $('form#lembrete').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lembrete').serialize();
+
+            $.ajax({
+                url:'../processa/update_lembrete.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+
+        $('#submit_inat_lem').click(function(){
+
+        $('form#lembrete').off();
+        $('form#lembrete').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lembrete').serialize();
+
+            $.ajax({
+                url:'../processa/inat_lembrete.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+        $('#submit_ativar_lem').click(function(){
+
+        $('form#lembrete').off();
+        $('form#lembrete').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lembrete').serialize();
+
+            $.ajax({
+                url:'../processa/ati_lembrete.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+ 
+                    $('#resultado').empty().html(data);
+
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+
+    $('#combo_proprietario').click(function(){
+        
+        var categoria = $('#combo_proprietario').serialize();
+        $.ajax({
+            url:'../processa/combo_box.php',
+            type:'POST',
+            dataType:'html',
+            data: categoria,
+            success: function(data){
+    
+                $('#combo_carro').empty().html(data);
+            }   
+        });
+    });
+
+
+
+$('#cad_agendamento').click(function(){
+
+        $('form#agendamentos').off();
+        $('form#agendamentos').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#agendamentos').serialize();
+
+            $.ajax({
+                url:'../processa/cadastros.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+$('#submit_edit_age').click(function(){
+
+        $('form#agendamentos').off();
+        $('form#agendamentos').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#agendamentos').serialize();
+
+            $.ajax({
+                url:'../processa/update_age.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+    $('#submit_exc_age').click(function(){
+
+        $('form#agendamentos').off();
+        $('form#agendamentos').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#agendamentos').serialize();
+
+            $.ajax({
+                url:'../processa/exc_agendamento.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                    top.location.href="agendamentos.php"
+                  
+                }
+            });
+
+             
+        });
+
+    });
 
          
 

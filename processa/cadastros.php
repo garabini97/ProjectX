@@ -163,3 +163,31 @@ else{
         $sql->close();
     }
 }
+
+if(isset($_POST['funcao']) && $_POST['funcao'] == 'cad_agendamento'){
+
+
+
+$sql = $mysqli->prepare('INSERT INTO agendamentos(id_cliente,id_carro,descricao,data) VALUES(?,?,?,?)');
+
+$sql->bind_param('iiss',$_POST['combo_proprietario'],$_POST['combo_carro'] ,$_POST['descricao'],$_POST['data']);
+$mysqli->autocommit(FALSE);
+$sql->execute();
+
+
+    if($sql->error){
+    
+echo "<div class='alert alert-danger'>
+                    <strong>Error!</strong> Erro ao cadastrar, $sql->error.
+                </div>";
+}
+ 
+else{
+
+        echo "<div class='alert alert-success'>
+                    <strong>Sucesso!</strong> Cadastrado com sucesso.
+                </div>";
+        $mysqli->commit();
+        $sql->close();
+    }
+}

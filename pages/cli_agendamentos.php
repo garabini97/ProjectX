@@ -1,71 +1,26 @@
- <?php include 'navbar.php'; ?>
+ <?php include 'navbar.php';
+ include  "../processa/conecta.php";
 
+
+  $sql2 = $mysqli->prepare('select a.id,c.nome,car.modelo,car.placa,a.descricao,a.data,a.data_cadastro from agendamentos as a ,clientes as c,carros as car where a.id_cliente = c.id and a.id_carro = car.id');
+  $sql2->execute();
+  $sql2->bind_result($id_agendamento,$nome_cli,$modelo,$placa,$descricao,$data,$data_cadastro ); 
+  $sql2->store_result();
+
+
+
+  ?>
  <div class="row">
   <div class="col-lg-12">
-    <h3 class="page-header">Meus Agendamentos</h3>
+    <h3 class="page-header">Controle de agendamentos</h3>
   </div>
   <!-- /.col-lg-12 -->
 </div>
 
 <div class="row">
 
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab">Cadastro</a>
-    </li>
-    <li><a href="#profile" data-toggle="tab">Atualizar</a>
-    </li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane fade in active" id="home">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="panel panel-default">
 
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-
-                       <label>Data</label>
-                      <input type='date' class="form-control">
-                      
-                      <label>Selecione o carro</label>
-                      <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-
-
-                      <label>Descrição</label>
-                      <textarea class="form-control" rows="3"></textarea>
-                     
-
-
-                    </div>
-                  </div>
-
-
-                </div>
-
-              </div>
-            </div>
-
-
-          </div>
-
-
-            <button type="button" class="btn btn-default btn-lg btn-block">Cadastrar</button>
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="tab-pane fade" id="profile">
+  
 
       <div class="row">
         <div class="col-lg-12">
@@ -75,68 +30,56 @@
               Lista de agendamentos
             </div>
             <div class="panel-body">
+         
+              
+              <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Digite a placa do carro">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>Açoes</th>
+  
+                    <th>Carro</th>
+                    <th>Descrição</th>
+                     <th>Dt de cadastro</th>
+                    <th>Data</th>
+              
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="odd gradeX">
-                    <td>Trident</td>
-                    <td>Internet Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">
+               <tbody>
 
-                      <a href="edit_agendamentos.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                      
-                       
+                  <?php while ($sql2->fetch()){
+                    echo " <tr class='odd gradeX'>
+       
+                    <td>$modelo/placa</td>
+                    <td>$descricao</td>
+                    <td>$data_cadastro</td>
+                    <td>$data</td>
+                    
+                  
+                    </tr>
+                    ";
+                  }?>
+              
 
 
-                    </td>
-                  </tr>
-                  <tr class="even gradeC">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">          
-                      <a href="edit_agendamentos.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                       
 
-                    </td>
-                  </tr>
-                  <tr class="odd gradeA">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.5</td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
-                    <td class="center">          
-                      <a href="edit_agendamentos.php"><i class="fa  fa-pencil    fa-fw"></i>Editar</a>
-                       
-                    </td>
-                  </tr>
 
-                </tbody>
-              </table>
-              <!-- /.table-responsive -->
+              </tbody>
+              </table><!-- /.table-responsive -->
 
-            </div>
-            <!-- /.panel-body -->
-          </div>
-          <!-- /.panel -->
-        </div>
-        <!-- /.col-lg-12 -->
-
-      </div>
-    </div>
   </div>
 </div>
+</div>
+</div>
+
+</div>
+
 </div>
 </body>
 </html>
