@@ -134,3 +134,32 @@ else{
         $sql->close();
     }
 }
+
+
+if(isset($_POST['funcao']) && $_POST['funcao'] == 'cad_lembretes'){
+
+
+
+$sql = $mysqli->prepare('INSERT INTO lembretes(id_usuarios,descricao,data_lembrete) VALUES(?,?,?)');
+
+$sql->bind_param('iss',$_POST['combo_destinatario'],$_POST['descricao'] ,$_POST['data']);
+$mysqli->autocommit(FALSE);
+$sql->execute();
+
+
+    if($sql->error){
+    
+echo "<div class='alert alert-danger'>
+                    <strong>Error!</strong> Erro ao cadastrar, $sql->error.
+                </div>";
+}
+ 
+else{
+
+        echo "<div class='alert alert-success'>
+                    <strong>Sucesso!</strong> Cadastrado com sucesso.
+                </div>";
+        $mysqli->commit();
+        $sql->close();
+    }
+}

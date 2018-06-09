@@ -79,7 +79,7 @@
             </div>
             <div class="panel-body">
                 <div class="input-group custom-search-form">
-                <input type="text" class="form-control" placeholder="Digite o nome do cliente">
+                <input type="text" class="form-control" placeholder="Digite a descrição do item">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button">
                     <i class="fa fa-search"></i>

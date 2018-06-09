@@ -437,6 +437,33 @@ e.preventDefault();
     });
 
 
+   $('#cad_lembretes').click(function(){
+
+        $('form#lembretes').off();
+        $('form#lembretes').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lembretes').serialize();
+
+            $.ajax({
+                url:'../processa/cadastros.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+ 
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
 
 
          
