@@ -1,8 +1,15 @@
- <?php include 'navbar.php'; ?>
+ <?php include 'navbar.php';
+ include  "../processa/conecta.php";
+
+  $sql2 = $mysqli->prepare('select o.id,c.nome,car.modelo,car.placa,o.observacao,o.data_cadastro from osm as o ,clientes as c,carros as car where o.id_cliente = c.id and o.id_carro = car.id');
+  $sql2->execute();
+  $sql2->bind_result($id_osm,$nome_cli,$modelo,$placa,$descricao,$data ); 
+  $sql2->store_result();
+  ?>
 
  <div class="row">
   <div class="col-lg-12">
-    <h3 class="page-header">  Minhas ordens de serviço</h3>
+    <h3 class="page-header">Minhas ordens de serviço</h3>
   </div>
   <!-- /.col-lg-12 -->
 </div>
@@ -12,56 +19,48 @@
 
         <div class="col-lg-12">
           <div class="panel panel-default">
-       
-            <div class="panel-body">
-              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+          
+             <div class="panel-body">
+
+              <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Digite a placa do carro">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
+                      <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>Ações</th>
+                    <th>Id</th>
+                     <th>Cliente</th>
+                    <th>Carro</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Valor</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="odd gradeX">
-                    <td>Trident</td>
-                    <td>Internet Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">
+               <tbody>
 
-                  <a href="cli_det_os.php"><i class="fa  fa-plus-circle     fa-fw"></i>Detalhes</a>
-                    
+                  <?php while ($sql2->fetch()){
+                    echo " <tr class='odd gradeX'>
+                     <td>$id_osm</td>
+                    <td>$nome_cli</td>
+                    <td>$modelo/placa</td>
+                    <td>$descricao</td>
+                    <td>$data</td>
+                    <td>Valor</td>
+                  
+                    </tr>
+                    ";
+                  }?>
+              
 
-                    </td>
-                  </tr>
-                  <tr class="even gradeC">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">          
-                    <a href="cli_det_os.php"><i class="fa  fa-plus-circle     fa-fw"></i>Detalhes</a>
-                    
-                       
 
-                    </td>
-                  </tr>
-                  <tr class="odd gradeA">
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.5</td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
-                    <td class="center">          
-                   <a href="cli_det_os.php"><i class="fa fa-plus-circle     fa-fw"></i>Detalhes</a>
-                 
-                       
-                    </td>
-                  </tr>
 
-                </tbody>
+
+              </tbody>
               </table>
               <!-- /.table-responsive -->
 

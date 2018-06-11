@@ -4,7 +4,7 @@
 
 $id_lembrete = $_GET['id'];
 
- $sql = $mysqli->prepare('select id_usuarios,c.nome,descricao,data_lembrete,l.status from lembretes as l,clientes as c where l.id=? and l.id_usuarios = c.id');
+ $sql = $mysqli->prepare('select id_usuarios,c.nome,descricao,date_format(data_lembrete,"%Y-%m-%dT%H:%i"),l.status from lembretes as l,clientes as c where l.id=? and l.id_usuarios = c.id');
  $sql->bind_param('i',$id_lembrete);
  $sql->execute();
  $sql->bind_result($id_usuarios,$nome_cli,$descricao,$data_lembrete,$status); 
@@ -33,10 +33,10 @@ $id_lembrete = $_GET['id'];
                     <div class="form-group">
 
                        <label>Data</label>
-                      <input type='date'  id="data" name="data_lembrete" class="form-control" value=<?php echo "$data_lembrete"?>>
+                      <input type='datetime-local'  id="data" name="data_lembrete" class="form-control" value=<?php echo "$data_lembrete"?>>
 	
                      <label>Cliente</label>
-                      <input  id="cliente" name="cliente" class="form-control" value=<?php echo "$nome_cli"?>>
+                      <input  id="cliente" name="cliente" class="form-control" value=<?php echo "$nome_cli"?> disabled>
                      
 
 

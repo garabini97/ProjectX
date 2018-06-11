@@ -8,9 +8,9 @@
 $sql->store_result();
 
 
- $sql1 = $mysqli->prepare('select id,id_usuarios,descricao,data_cadastro,data_lembrete from lembretes limit 10');
+ $sql1 = $mysqli->prepare('select l.id,id_usuarios,descricao,l.data_cadastro,data_lembrete,c.nome from lembretes as l,clientes as c where id_usuarios = c.id limit 10');
  $sql1->execute();
- $sql1->bind_result($id_lembrete,$id_usuarios,$descricao,$data_cadastro,$data_lembrete); 
+ $sql1->bind_result($id_lembrete,$id_usuarios,$descricao,$data_cadastro,$data_lembrete,$nome_cli); 
  $sql1->store_result();
 
 
@@ -106,7 +106,7 @@ $sql->store_result();
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                     <th>Destinatário</th>
+                     <th>Cliente</th>
                     <th>Descrição</th>
                     <th>Dt Cadastro</th>
                     <th>Dt Lembrete</th>
@@ -117,7 +117,7 @@ $sql->store_result();
 
                   <?php while ($sql1->fetch()){
                     echo " <tr class='odd gradeX'>
-                    <td>$id_usuarios</td>
+                    <td>$nome_cli</td>
                     <td>$descricao</td>
                     <td>$data_cadastro</td>
                     <td>$data_lembrete</td>

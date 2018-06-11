@@ -714,6 +714,90 @@ e.preventDefault();
 
     });
 
+
+
+
+   $('#submit_edit_orc').click(function(){
+
+        $('form#orcamento').off();
+        $('form#orcamento').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#orcamento').serialize();
+
+            $.ajax({
+                url:'../processa/update_orc.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+
+        $('#submit_inat_orc').click(function(){
+
+        $('form#orcamento').off();
+        $('form#orcamento').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#orcamento').serialize();
+
+            $.ajax({
+                url:'../processa/inat_orc.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+ 
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+              $('#submit_ati_orc').click(function(){
+
+        $('form#orcamento').off();
+        $('form#orcamento').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#orcamento').serialize();
+
+            $.ajax({
+                url:'../processa/ati_orc.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+ 
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
 });
 
          
