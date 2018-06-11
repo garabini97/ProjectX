@@ -3,10 +3,10 @@
 
 $id_orc = $_GET['id'];
 
-  $sql = $mysqli->prepare('select orc.id,date_format(orc.data_cadastro,"%Y-%m-%dT%H:%i"),c.nome,car.modelo,car.placa,orc.observacao,orc.status from clientes as c ,carros as car,orcamento as orc where car.id = orc.id_carro and c.id = orc.id_cliente and orc.id = ? ');
+  $sql = $mysqli->prepare('select orc.id,date_format(orc.data_cadastro,"%Y-%m-%dT%H:%i"),c.nome,car.modelo,car.placa,orc.observacao,orc.status from clientes as c ,carros as car,osm as orc where car.id = orc.id_carro and c.id = orc.id_cliente and orc.id = ? ');
   $sql->bind_param('i',$id_orc);
   $sql->execute();
-  $sql->bind_result($id,$data,$nome_cli,$modelo,$placa,$descricao,$status); 
+  $sql->bind_result($id_osm,$data,$nome_cli,$modelo,$placa,$descricao,$status); 
   $sql->fetch();
  ?>
 
@@ -19,7 +19,7 @@ $id_orc = $_GET['id'];
  </div>
 
  <div class="row">
-  <form id='orcamento'>
+  <form id='osm'>
   <div class="col-lg-12">
     <div class="panel panel-default">
      
@@ -30,7 +30,7 @@ $id_orc = $_GET['id'];
                     <div class="form-group">
 
                       <label>Nr.do orçamento</label>
-                      <input  id="id" name="id" class="form-control" value=<?php echo "$id"?> disabled>
+                      <input  id="id" name="id" class="form-control" value=<?php echo "$id_osm"?> disabled>
                       <label>Data</label>
                       <input type='datetime-local' id="data" name="data" class="form-control" value=<?php echo "$data"?>>
                       <label>Cliente</label>
@@ -61,21 +61,21 @@ $id_orc = $_GET['id'];
 
           </div>
        </div>
- <input id="id_orc" name='id_orc' type="hidden" value=<?php echo "$id_orc"?>>
+ <input id="id_osm" name='id_osm' type="hidden" value=<?php echo "$id_osm"?>>
         
     <div class='col-lg-12' id='resultado'></div>
 
-    <button id='submit_edit_orc' type="submit" class="btn btn-default btn-lg btn-block">Atualizar</button>
+    <button id='submit_edit_osm' type="submit" class="btn btn-default btn-lg btn-block">Atualizar</button>
 
   <?php
 
       if($status == 'A'){
-      echo "<button  id='submit_inat_orc' type='submit' class='btn btn-default btn-lg btn-block'>Cancelar</button>";}
+      echo "<button  id='submit_inat_osm' type='submit' class='btn btn-default btn-lg btn-block'>Cancelar</button>";}
 
 
      else{
 
-echo "<button  id='submit_ati_orc' type='submit' class='btn btn-default btn-lg btn-block'>Re-Cadastrar</button>";
+echo "<button  id='submit_ati_osm' type='submit' class='btn btn-default btn-lg btn-block'>Re-Cadastrar</button>";
 
 
      };

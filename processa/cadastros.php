@@ -219,3 +219,31 @@ else{
         $sql->close();
     }
 }
+
+if(isset($_POST['funcao']) && $_POST['funcao'] == 'cad_osm'){
+
+
+
+$sql = $mysqli->prepare('INSERT INTO osm(id_cliente,id_carro,observacao) VALUES(?,?,?)');
+
+$sql->bind_param('iis',$_POST['combo_proprietario'],$_POST['combo_carro'] ,$_POST['descricao']);
+$mysqli->autocommit(FALSE);
+$sql->execute();
+
+
+    if($sql->error){
+    
+echo "<div class='alert alert-danger'>
+                    <strong>Error!</strong> Erro ao cadastrar, $sql->error.
+                </div>";
+}
+ 
+else{
+
+        echo "<div class='alert alert-success'>
+                    <strong>Sucesso!</strong> Cadastrado com sucesso.
+                </div>";
+        $mysqli->commit();
+        $sql->close();
+    }
+}

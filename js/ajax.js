@@ -798,6 +798,60 @@ e.preventDefault();
         });
 
     });
+
+               $('#cad_os').click(function(){
+
+        $('form#os').off();
+        $('form#os').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#os').serialize();
+
+            $.ajax({
+                url:'../processa/cadastros.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+                    $('#submit_edit_osm').click(function(){
+
+        $('form#osm').off();
+        $('form#osm').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#osm').serialize();
+
+            $.ajax({
+                url:'../processa/update_osm.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
 });
 
          

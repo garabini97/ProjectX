@@ -39,7 +39,7 @@
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home">
       <div class="row">
-        <form id='orcamento'>
+        <form id='os'>
         <div class="col-lg-12">
           <div class="panel panel-default">
 
@@ -49,8 +49,7 @@
                   <div class="col-lg-6">
                     <div class="form-group">
 
-                      <label>Data</label>
-                      <input type='date'  id="data" name="data" class="form-control">
+                     
                       <label>Selecione o cliente</label>
                       <select id='combo_proprietario' name='combo_proprietario' class="form-control">
                         <option>Selecione o cliente</option>
@@ -71,9 +70,9 @@
                      
                     </div>
 
-  <input id="funcao" name='funcao' type="hidden" value="cad_orcamento" >
+  <input id="funcao" name='funcao' type="hidden" value="cad_osm" >
     <div class='col-lg-12' id='resultado'></div>
-     <button type="submit" id='cad_orcamento' class="btn btn-default btn-lg btn-block">Cadastrar</button>
+     <button type="submit" id='cad_os' class="btn btn-default btn-lg btn-block">Cadastrar</button>
               <!-- /.table-responsive -->
 
             </div>
