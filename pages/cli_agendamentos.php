@@ -56,7 +56,7 @@
                   <?php while ($sql2->fetch()){
                     echo " <tr class='odd gradeX'>
        
-                    <td>$modelo/placa</td>
+                    <td>$modelo/$placa</td>
                     <td>$descricao</td>
                     <td>$data_cadastro</td>
                     <td>$data</td>

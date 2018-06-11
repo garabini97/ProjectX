@@ -625,11 +625,15 @@ e.preventDefault();
 
     $('#submit_exc_age').click(function(){
 
+     
+
         $('form#agendamentos').off();
         $('form#agendamentos').submit(function(e){
- 
+            e.preventDefault();
+     var confirmacao = confirm("Tem certeza que deseja excluir?");
+          if (confirmacao == true){
 
-e.preventDefault();
+
 
             var dados = $('form#agendamentos').serialize();
 
@@ -645,16 +649,73 @@ e.preventDefault();
                 }
             });
 
+            }  
+        });
+   
+
+    });
+
+
+
+
+
+
+        $('#cad_orcamento').click(function(){
+
+        $('form#orcamento').off();
+        $('form#orcamento').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#orcamento').serialize();
+
+            $.ajax({
+                url:'../processa/cadastros.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
              
         });
 
     });
 
-         
+
+
+        $('#incluir').click(function(){
+
+        $('form#itens').off();
+        $('form#itens').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#itens').serialize();
+
+            $.ajax({
+                url:'../processa/inclui_itens.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                    $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
 
     });
 
+});
 
-
+         
    
 

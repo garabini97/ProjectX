@@ -125,7 +125,7 @@
                   <?php while ($sql2->fetch()){
                     echo " <tr class='odd gradeX'>
                     <td>$nome_cli</td>
-                    <td>$modelo/placa</td>
+                    <td>$modelo/$placa</td>
                     <td>$descricao</td>
                     <td>$data</td>
                     <td><a href='edit_agendamentos.php?id=$id_agendamento'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>

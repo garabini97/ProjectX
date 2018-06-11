@@ -5,7 +5,7 @@
 
  $id_agendamento = $_GET['id'];
 
-  $sql2 = $mysqli->prepare('select c.nome,car.modelo,car.placa,a.descricao,a.data,a.status from agendamentos as a ,clientes as c,carros as car where a.id_cliente = c.id and a.id_carro = car.id and a.id = ?');
+  $sql2 = $mysqli->prepare('select c.nome,car.modelo,car.placa,a.descricao,date_format(a.data,"%Y-%m-%dT%H:%i"),a.status from agendamentos as a ,clientes as c,carros as car where a.id_cliente = c.id and a.id_carro = car.id and a.id = ?');
 
 $sql2->bind_param('i',$id_agendamento);
   $sql2->execute();
@@ -36,7 +36,7 @@ $sql2->close();
                     <div class="form-group">
 
                        <label>Data</label>
-                      <input type='datetime-local' id="data" name="data" class="form-control" value=<?php echo "$data"?> >
+                      <input type='datetime-local' id="data" name="data" class="form-control"  value=<?php echo "$data"?>>
                       <label>Cliente</label>
                       <input id="cliente" name="cliente" class="form-control" value=<?php echo "$nome_cli"?> disabled >
                       <label>Carro</label>
