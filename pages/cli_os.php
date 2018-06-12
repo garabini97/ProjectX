@@ -1,7 +1,7 @@
  <?php include 'navbar.php';
  include  "../processa/conecta.php";
 
-  $sql2 = $mysqli->prepare('select o.id,c.nome,car.modelo,car.placa,o.observacao,o.data_cadastro from osm as o ,clientes as c,carros as car where o.id_cliente = c.id and o.id_carro = car.id');
+  $sql2 = $mysqli->prepare('select o.id,c.nome,car.modelo,car.placa,o.observacao,o.data from osm as o ,clientes as c,carros as car where o.id_cliente = c.id and o.id_carro = car.id');
   $sql2->execute();
   $sql2->bind_result($id_osm,$nome_cli,$modelo,$placa,$descricao,$data ); 
   $sql2->store_result();
@@ -33,7 +33,7 @@
                       <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>Num.OS</th>
                      <th>Cliente</th>
                     <th>Carro</th>
                     <th>Descrição</th>

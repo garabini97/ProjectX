@@ -2,7 +2,7 @@
  include  "../processa/conecta.php";
 
 
- $sql = $mysqli->prepare('select id,descricao,valor from itens limit 10');
+ $sql = $mysqli->prepare('select id,descricao,valor from itens where status = "A" limit 10');
  $sql->execute();
  $sql->bind_result($id,$descricao,$valor); 
  $sql->store_result();

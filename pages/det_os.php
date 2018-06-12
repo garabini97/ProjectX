@@ -3,7 +3,7 @@
 
 $id_orc = $_GET['id'];
 
-  $sql = $mysqli->prepare('select orc.id,date_format(orc.data_cadastro,"%Y-%m-%dT%H:%i"),c.nome,car.modelo,car.placa,orc.observacao,orc.status from clientes as c ,carros as car,osm as orc where car.id = orc.id_carro and c.id = orc.id_cliente and orc.id = ? ');
+  $sql = $mysqli->prepare('select orc.id,date_format(orc.data,"%Y-%m-%dT%H:%i"),c.nome,car.modelo,car.placa,orc.observacao,orc.status from clientes as c ,carros as car,osm as orc where car.id = orc.id_carro and c.id = orc.id_cliente and orc.id = ? ');
   $sql->bind_param('i',$id_orc);
   $sql->execute();
   $sql->bind_result($id_osm,$data,$nome_cli,$modelo,$placa,$descricao,$status); 
@@ -29,7 +29,7 @@ $id_orc = $_GET['id'];
                   <div class="col-lg-6">
                     <div class="form-group">
 
-                      <label>Nr.do orçamento</label>
+                      <label>Nr.da OS</label>
                       <input  id="id" name="id" class="form-control" value=<?php echo "$id_osm"?> disabled>
                       <label>Data</label>
                       <input type='datetime-local' id="data" name="data" class="form-control" value=<?php echo "$data"?>>

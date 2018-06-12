@@ -7,7 +7,7 @@
   $sql->bind_result($id,$nome); 
   $sql->store_result();
 
-  $sql2 = $mysqli->prepare('select o.id,c.nome,car.modelo,car.placa,o.observacao,o.data_cadastro from osm as o ,clientes as c,carros as car where o.id_cliente = c.id and o.id_carro = car.id');
+  $sql2 = $mysqli->prepare('select o.id,c.nome,car.modelo,car.placa,o.observacao,o.data from osm as o ,clientes as c,carros as car where o.id_cliente = c.id and o.id_carro = car.id');
   $sql2->execute();
   $sql2->bind_result($id_orc,$nome_cli,$modelo,$placa,$descricao,$data ); 
   $sql2->store_result();
@@ -49,7 +49,8 @@
                   <div class="col-lg-6">
                     <div class="form-group">
 
-                     
+                     <label>Data</label>
+                      <input type='datetime-local'  id="data" name="data" class="form-control">
                       <label>Selecione o cliente</label>
                       <select id='combo_proprietario' name='combo_proprietario' class="form-control">
                         <option>Selecione o cliente</option>
@@ -112,7 +113,7 @@
                       <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                     <th>Id</th>
+                     <th>Num.OS</th>
                      <th>Cliente</th>
                     <th>Carro</th>
                     <th>Descrição</th>
@@ -126,7 +127,7 @@
                     echo " <tr class='odd gradeX'>
                       <td>$id_orc</td>
                     <td>$nome_cli</td>
-                    <td>$modelo/placa</td>
+                    <td>$modelo/$placa</td>
                     <td>$descricao</td>
                     <td>$data</td>
                     <td><a href='lancamento_itens.php?id=$id_orc'><i class='fa  fa-pencil    fa-fw'></i>Lançamento de itens</a><a href='det_os.php?id=$id_orc'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>

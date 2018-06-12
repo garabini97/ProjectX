@@ -33,7 +33,7 @@
                       <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>Num.Orçamento</th>
                      <th>Cliente</th>
                     <th>Carro</th>
                     <th>Descrição</th>

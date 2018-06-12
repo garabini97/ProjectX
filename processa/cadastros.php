@@ -196,9 +196,9 @@ if(isset($_POST['funcao']) && $_POST['funcao'] == 'cad_orcamento'){
 
 
 
-$sql = $mysqli->prepare('INSERT INTO orcamento(id_cliente,id_carro,observacao) VALUES(?,?,?)');
+$sql = $mysqli->prepare('INSERT INTO orcamento(id_cliente,id_carro,observacao,data_cadastro) VALUES(?,?,?,?)');
 
-$sql->bind_param('iis',$_POST['combo_proprietario'],$_POST['combo_carro'] ,$_POST['descricao']);
+$sql->bind_param('iiss',$_POST['combo_proprietario'],$_POST['combo_carro'] ,$_POST['descricao'],$_POST['data']);
 $mysqli->autocommit(FALSE);
 $sql->execute();
 
@@ -224,9 +224,9 @@ if(isset($_POST['funcao']) && $_POST['funcao'] == 'cad_osm'){
 
 
 
-$sql = $mysqli->prepare('INSERT INTO osm(id_cliente,id_carro,observacao) VALUES(?,?,?)');
+$sql = $mysqli->prepare('INSERT INTO osm(id_cliente,id_carro,observacao,data) VALUES(?,?,?)');
 
-$sql->bind_param('iis',$_POST['combo_proprietario'],$_POST['combo_carro'] ,$_POST['descricao']);
+$sql->bind_param('iis',$_POST['combo_proprietario'],$_POST['combo_carro'] ,$_POST['descricao'],$_POST['data']);
 $mysqli->autocommit(FALSE);
 $sql->execute();
 

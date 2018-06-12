@@ -2,7 +2,7 @@
 include  "../processa/conecta.php";
 
 
-    $sql = $mysqli->prepare('UPDATE osm set data_cadastro=?,observacao=? where id=?');
+    $sql = $mysqli->prepare('UPDATE osm set data=?,observacao=? where id=?');
 
 $sql->bind_param('ssi',$_POST['data'] ,$_POST['descricao'],$_POST['id_osm']);
     $sql->execute();

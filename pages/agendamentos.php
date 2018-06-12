@@ -44,7 +44,7 @@
                     <div class="form-group">
 
                        <label>Data</label>
-                      <input type='date' id="data" name="data" class="form-control">
+                      <input type='datetime-local' id="data" name="data" class="form-control">
 	
                       <label>Selecione o cliente</label>
                       <select id='combo_proprietario' name='combo_proprietario' class="form-control">

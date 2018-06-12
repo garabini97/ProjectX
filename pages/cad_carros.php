@@ -6,9 +6,9 @@
   $sql->execute();
   $sql->bind_result($id,$nome); 
   $sql->store_result();
-  $sql2 = $mysqli->prepare('select id,marca,modelo,placa,ano from carros');
+  $sql2 = $mysqli->prepare('select c.nome,car.id,marca,modelo,placa,ano from carros as car,clientes as c,carro_cliente as cl where car.id = cl.id_carro and c.id = cl.id_cliente  ');
   $sql2->execute();
-  $sql2->bind_result($id,$marca,$modelo,$placa,$ano); 
+  $sql2->bind_result($nome_cli,$id,$marca,$modelo,$placa,$ano); 
   $sql2->store_result();
 
 
@@ -116,6 +116,7 @@
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
+                    <th>Dono</th>
                      <th>Marca</th>
                     <th>Modelo</th>
                     <th>Placa</th>
@@ -127,6 +128,7 @@
 
                   <?php while ($sql2->fetch()){
                     echo " <tr class='odd gradeX'>
+                    <td>$nome_cli</td>
                     <td>$marca</td>
                     <td>$modelo</td>
                     <td>$placa</td>
