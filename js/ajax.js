@@ -852,6 +852,119 @@ e.preventDefault();
     });
 
 
+             $('#submit_itens_osm').click(function(){
+
+        $('form#lanc_orc').off();
+        $('form#lanc_orc').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lanc_orc').serialize();
+
+            $.ajax({
+                url:'../processa/cadastros.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+               
+                     $('#item-tabela').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+     
+
+      $('#excluir_item').click(function(){
+
+        $('form#lanc_orc').off();
+        $('form#lanc_orc').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lanc_orc').serialize();
+
+            $.ajax({
+                url:'../processa/excluir_item.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+               
+                     $('#item-tabela').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+    $('#excluir_item_os').click(function(){
+
+        $('form#lanc_orc').off();
+        $('form#lanc_orc').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lanc_orc').serialize();
+
+            $.ajax({
+                url:'../processa/excluir_item_os.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+               
+                     $('#item-tabela').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
+              $('#submit_itens_osm_os').click(function(){
+
+        $('form#lanc_orc').off();
+        $('form#lanc_orc').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#lanc_orc').serialize();
+
+            $.ajax({
+                url:'../processa/cadastros.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+               
+                     $('#item-tabela').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
+
+
 });
 
          

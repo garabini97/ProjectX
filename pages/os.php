@@ -130,7 +130,7 @@
                     <td>$modelo/$placa</td>
                     <td>$descricao</td>
                     <td>$data</td>
-                    <td><a href='lancamento_itens.php?id=$id_orc'><i class='fa  fa-pencil    fa-fw'></i>Lançamento de itens</a><a href='det_os.php?id=$id_orc'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
+                    <td><a href='lancamento_itens_os.php?id=$id_orc'><i class='fa  fa-pencil    fa-fw'></i>Lançamento de itens</a><a href='det_os.php?id=$id_orc'><i class='fa  fa-pencil    fa-fw'></i>Editar</a>
                   
                     </tr>
                     ";

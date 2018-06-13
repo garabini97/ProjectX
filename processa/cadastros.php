@@ -247,3 +247,139 @@ else{
         $sql->close();
     }
 }
+
+
+
+if(isset($_POST['funcao']) && $_POST['funcao'] == 'cad_os_item'){
+
+
+
+$sql = $mysqli->prepare('INSERT INTO itens_orcamento(id_item,id_orcamento,quantidade,valor) VALUES(?,?,?,?)');
+
+$sql->bind_param('iiis',$_POST['id_item'],$_POST['id_orc'],$_POST['quantidade'] ,$_POST['valor']);
+$mysqli->autocommit(FALSE);
+$sql->execute();
+
+
+    if($sql->error){
+    
+echo "<div class='alert alert-danger'>
+                    <strong>Error!</strong> Erro ao cadastrar, $sql->error.
+                </div>";
+}
+ 
+else{
+        $mysqli->commit();
+        $sql->close();
+
+
+$sql = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.valor*io.quantidade) from itens_orcamento as io,itens as i where i.id = io.id_item and io.id_orcamento = ?');
+$sql->bind_param('i',$_POST['id_orc']);
+  $sql->execute();
+  $sql->bind_result($id,$id_item,$descricao,$quantidade,$valor,$total); 
+  $sql->store_result();
+
+echo "  <table width='100%'' class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                  <div id='tabela-itens'>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Quantidade</th>
+                      <th>Valor</th>
+                          <th>Sub-total</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>";
+                   while ($sql->fetch()){
+
+
+echo "   <tr class='odd gradeX'>
+                      <td>$id_item</td>
+                      <td>$descricao</td>
+                      <td>$quantidade</td>
+                      <td>$valor</td>
+                      <td>$total</td>
+                      <td>
+                   <button id='excluir_item' type='submit' value=$id_item><i class='fa  fa-times    fa-fw'></i>Excluir</a>
+                      </td>
+                    </tr>"; 
+
+                }
+
+                    echo"
+                 </tbody>
+               </div>
+               </table>";
+
+ 
+
+    }
+}
+
+if(isset($_POST['funcao']) && $_POST['funcao'] == 'cad_os_item_os'){
+
+
+
+$sql = $mysqli->prepare('INSERT INTO itens_osm(id_item,id_osm,quantidade,valor) VALUES(?,?,?,?)');
+
+$sql->bind_param('iiis',$_POST['id_item'],$_POST['id_os'],$_POST['quantidade'] ,$_POST['valor']);
+$mysqli->autocommit(FALSE);
+$sql->execute();
+
+
+    if($sql->error){
+    
+echo "<div class='alert alert-danger'>
+                    <strong>Error!</strong> Erro ao cadastrar, $sql->error.
+                </div>";
+}
+ 
+else{
+        $mysqli->commit();
+        $sql->close();
+
+
+$sql = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.valor*io.quantidade) from itens_osm as io,itens as i where i.id = io.id_item');
+  $sql->execute();
+  $sql->bind_result($id,$id_item,$descricao,$quantidade,$valor,$total); 
+  $sql->store_result();
+
+echo "  <table width='100%'' class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                  <div id='tabela-itens'>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Quantidade</th>
+                      <th>Valor</th>
+                          <th>Sub-total</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>";
+                   while ($sql->fetch()){
+
+
+echo "   <tr class='odd gradeX'>
+                      <td>$id_item</td>
+                      <td>$descricao</td>
+                      <td>$quantidade</td>
+                      <td>$valor</td>
+                      <td>$total</td>
+                      <td>
+                   <button id='excluir_item' type='submit' value=$id_item><i class='fa  fa-times    fa-fw'></i>Excluir</a>
+                      </td>
+                    </tr>"; 
+
+                }
+
+                    echo"
+                 </tbody>
+               </div>
+               </table>";
+
+ 
+    }
+}

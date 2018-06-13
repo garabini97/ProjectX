@@ -1,7 +1,7 @@
  <?php include 'navbar.php';
  include  "../processa/conecta.php";
 
-$id_orc = $_GET['id'];
+$id_os = $_GET['id'];
 
   $sql = $mysqli->prepare('select id,descricao,valor from itens');
   $sql->execute();
@@ -9,7 +9,7 @@ $id_orc = $_GET['id'];
   $sql->store_result();
 
 
-  $sql2 = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.quantidade * io.valor) from itens_orcamento as io,itens as i where i.id = io.id_item and io.id_orcamento = ?');
+  $sql2 = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.quantidade * io.valor) from itens_osm as io,itens as i where i.id = io.id_item and io.id_osm = ?');
   $sql2->bind_param('i',$id_orc);
   $sql2->execute();
   $sql2->bind_result($id,$id_item,$descricao,$quantidade,$valor,$total); 
@@ -45,13 +45,13 @@ $id_orc = $_GET['id'];
 
      <label>Quantidade</label>
                        <input id="quantidade" name='quantidade' type="number"  class="form-control" >
-                        <input id="funcao" name='funcao' type="hidden" value="cad_os_item" >
-                 <input id="id_orc" name='id_orc' type="hidden" value=<?php echo "$id_orc"?>>
+                        <input id="funcao" name='funcao' type="hidden" value="cad_os_item_os" >
+                 <input id="id_os" name='id_os' type="hidden" value=<?php echo "$id_os"?>>
                     <input id="valor" name='valor' type="hidden" value=<?php echo "$valor"?>>
         
      <div class='col-lg-12' id='resultado'></div>
 
-       <button id='submit_itens_osm' type="submit" class="btn btn-default btn-lg btn-block">Incluir</button>
+       <button id='submit_itens_osm_os' type="submit" class="btn btn-default btn-lg btn-block">Incluir</button>
 
                 </div>
    
@@ -80,7 +80,7 @@ echo "   <tr class='odd gradeX'>
                       <td>$valor</td>
                       <td>$total</td>
                       <td>
-                        <button id='excluir_item' type='submit' value=$id_item><i class='fa  fa-times    fa-fw'></i>Excluir</button>
+                        <button id='excluir_item_os' type='submit' value=$id_item><i class='fa  fa-times    fa-fw'></i>Excluir</button>
                       </td>
                     </tr>"; 
 
@@ -101,4 +101,5 @@ echo "   <tr class='odd gradeX'>
 
 </body>
 </html>
+ 
  
