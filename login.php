@@ -21,26 +21,26 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login - ControlCar</div>
       <div class="card-body">
-        <form>
+        <form id='login'>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Digite seu email...">
+            <label for="exampleInputEmail1">Login</label>
+            <input class="form-control" name='login' id="login" >
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Senha</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Digite sua senha...">
+            <input name='senha' id="senha"  class="form-control"  type="password">
           </div>
           <div class="form-group">
             <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Lembrar senha </label>
+              
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="index.html">Login</a>
+            <div id='resultado'></div>
+            <button type='submit' id='login_nat' class="btn btn-primary btn-block"  href="index.html">Login</a>
           </form>
+
           <div class="text-center">
-            <a class="d-block small mt-3" href="register.php">Registrar uma conta</a>
-            <a class="d-block small" href="esqueceusenha.php">Esqueceu sua senha?</a>
+            
           </div>
         </div>
       </div>
@@ -50,6 +50,9 @@
     <script src="vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor2/jquery-easing/jquery.easing.min.js"></script>
+      <script src="js/ajax.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+
   </body>
 
   </html>

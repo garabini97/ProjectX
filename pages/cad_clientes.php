@@ -44,17 +44,17 @@
                     <div class="form-group">
 
                       <label>Cpf</label>
-                      <input id="cpf" name="cpf" class="form-control">
+                      <input id="cpf" name="cpf" class="form-control" required>
                       <label>Nome</label>
-                      <input id="nome" name="nome" class="form-control">
+                      <input id="nome" name="nome" class="form-control" required>
                       <label>Login</label>
-                      <input id="login" name="login" class="form-control">
+                      <input id="login" name="login" class="form-control" required>
                       <label>Sexo</label>
-                      <input id="sexo" name="sexo" class="form-control">
+                      <input id="sexo" name="sexo" class="form-control" required>
                       <label>Senha</label>
-                      <input id="senha" name="senha" class="form-control">
+                      <input id="senha" name="senha" class="form-control" required>
                       <label>Confirme a senha</label>
-                      <input id="c_senha" name="c_senha" class="form-control">
+                      <input id="c_senha" name="c_senha" class="form-control" required>
 
                     </div>
                   </div>
@@ -79,19 +79,19 @@
 
                     <div class="form-group">
                       <label>Cep</label>
-                      <input id="cep" name="cep" class="form-control"> 
+                      <input id="cep" name="cep" class="form-control" required> 
                       <label>Rua</label>
-                      <input id="rua" name="rua" class="form-control"> 
+                      <input id="rua" name="rua" class="form-control" required> 
                       <label>Complemento</label>
                       <input id="complemento" name="complemento" class="form-control"> 
                       <label>Numero</label>
-                      <input id="numero" name="numero" class="form-control"> 
+                      <input id="numero" name="numero" class="form-control" required> 
                       <label>Bairro</label>
-                      <input id="bairro" name="bairro" class="form-control"> 
+                      <input id="bairro" name="bairro" class="form-control" required> 
                       <label>Cidade</label>
-                      <input id="cidade" name="cidade" class="form-control"> 
+                      <input id="cidade" name="cidade" class="form-control" required> 
                       <label>Estado</label>
-                      <input id="estado" name="estado" class="form-control"> 
+                      <input id="estado" name="estado" class="form-control" required> 
 
 
                     </div>

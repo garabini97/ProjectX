@@ -2,7 +2,8 @@
  include  "../processa/conecta.php";
 
 
-  $sql2 = $mysqli->prepare('select a.id,c.nome,car.modelo,car.placa,a.descricao,a.data,a.data_cadastro from agendamentos as a ,clientes as c,carros as car where a.id_cliente = c.id and a.id_carro = car.id');
+  $sql2 = $mysqli->prepare('select a.id,c.nome,car.modelo,car.placa,a.descricao,a.data,a.data_cadastro from agendamentos as a ,clientes as c,carros as car where a.id_cliente = c.id and a.id_carro = car.id and c.id = ?');
+  $sql2->bind_param('i',$_SESSION['id']);
   $sql2->execute();
   $sql2->bind_result($id_agendamento,$nome_cli,$modelo,$placa,$descricao,$data,$data_cadastro ); 
   $sql2->store_result();

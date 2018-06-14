@@ -341,7 +341,8 @@ else{
         $sql->close();
 
 
-$sql = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.valor*io.quantidade) from itens_osm as io,itens as i where i.id = io.id_item');
+$sql = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.valor*io.quantidade) from itens_osm as io,itens as i where i.id = io.id_item and io.id_osm = ?');
+$sql->bind_param('i',$_POST['id_os']);
   $sql->execute();
   $sql->bind_result($id,$id_item,$descricao,$quantidade,$valor,$total); 
   $sql->store_result();

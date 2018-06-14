@@ -1,6 +1,14 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION['login']))//não está logado
+ echo '<script>top.location.href="../login.php";</script>';
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
 
 
 <head>
@@ -77,12 +85,9 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                      
+            
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -94,21 +99,29 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                        
+
+
+                         <?php  if($_SESSION['tipo'] == 'U'){
+
+
+
+echo "
+             
                  
                         <li>
-                            <a href="#"><i class="fa fa-pencil  fa-fw"></i> Cadastros<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            <a href='#'><i class='fa fa-pencil  fa-fw'></i> Cadastros<span class='fa arrow'></span></a>
+                            <ul class='nav nav-second-level'>
                             	<li>
-                                    <a href="cad_clientes.php">Cadastro de clientes</a>
+                                    <a href='cad_clientes.php'>Cadastro de clientes</a>
                                 </li>
                                 <li>
-                                    <a href="cad_usuarios.php">Cadastro de usuários</a>
+                                    <a href='cad_usuarios.php'>Cadastro de usuários</a>
                                 </li>
                                   <li>
-                                    <a href="cad_carros.php">Cadastro de carros</a>
+                                    <a href='cad_carros.php'>Cadastro de carros</a>
                                 </li>
                                  <li>
-                                    <a href="cad_itens.php">Cadastro de itens</a>
+                                    <a href='cad_itens.php'>Cadastro de itens</a>
                                 </li>
 
                             </ul>
@@ -117,16 +130,16 @@
 
 
                          <li>
-                            <a href="#"><i class="fa  fa-wrench  fa-fw"></i>Atendimento ao cliente<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            <a href='#'><i class='fa  fa-wrench  fa-fw'></i>Atendimento ao cliente<span class='fa arrow'></span></a>
+                            <ul class='nav nav-second-level'>
                             	<li>
-                                    <a href="agendamentos.php">Agendamentos</a>
+                                    <a href='agendamentos.php'>Agendamentos</a>
                                 </li>
                                 <li>
-                                    <a href="orcamentos.php">Orçamentos</a>
+                                    <a href='orcamentos.php'>Orçamentos</a>
                                 </li>
                                 <li>
-                                    <a href="os.php">Ordens de serviço</a>
+                                    <a href='os.php'>Ordens de serviço</a>
                                 </li>
 
                             </ul>
@@ -135,23 +148,38 @@
 
 
                         <li>
-                            <a href="lembretes.php"><i class="fa fa-envelope-o fa-fw"></i>Lembretes</a>
+                            <a href='lembretes.php'><i class='fa fa-envelope-o fa-fw'></i>Lembretes</a>
                         </li>
-                         <li class="divider"></li>
-                         <label>--Menus dos clientes--</label>
+                         <li class='divider'></li>
+
+";}
+
+
+if($_SESSION['tipo'] == 'C'){
+
+
+
+echo"
+                        
 
                          <li>
-                            <a href="cli_agendamentos.php"><i class="fa fa-calendar   fa-fw"></i>Agendamentos</a>
+                            <a href='cli_agendamentos.php'><i class='fa fa-calendar   fa-fw'></i>Agendamentos</a>
                         </li>
                          <li>
-                            <a href="cli_orcamentos.php"><i class="fa  fa-file-o  fa-fw"></i>Orçamentos</a>
+                            <a href='cli_orcamentos.php'><i class='fa  fa-file-o  fa-fw'></i>Orçamentos</a>
                         </li>
                         <li>
-                            <a href="cli_os.php"><i class="fa fa-check-square-o fa-fw"></i>Ordens de serviço</a>
+                            <a href='cli_os.php'><i class='fa fa-check-square-o fa-fw'></i>Ordens de serviço</a>
                         </li>
                         <li>
-                            <a href="cli_lembretes.php"><i class="fa  fa-envelope-o   fa-fw"></i>Lembretes</a>
+                            <a href='cli_lembretes.php'><i class='fa  fa-envelope-o   fa-fw'></i>Lembretes</a>
                         </li>
+
+
+";
+                    }
+
+                     ?>
                     </ul>
                     
 

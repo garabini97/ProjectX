@@ -3,14 +3,14 @@
 
 $id_os = $_GET['id'];
 
-  $sql = $mysqli->prepare('select id,descricao,valor from itens');
+$sql = $mysqli->prepare('select id,descricao,valor from itens');
   $sql->execute();
   $sql->bind_result($id_item,$descricao,$valor); 
   $sql->store_result();
 
 
-  $sql2 = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.quantidade * io.valor) from itens_osm as io,itens as i where i.id = io.id_item and io.id_osm = ?');
-  $sql2->bind_param('i',$id_orc);
+  $sql2 = $mysqli->prepare('select io.id,i.id,i.descricao,io.quantidade,io.valor,(io.quantidade * io.valor) from itens_osm io,itens as i where i.id = io.id_item and io.id_osm = ?');
+  $sql2->bind_param('i',$id_os);
   $sql2->execute();
   $sql2->bind_result($id,$id_item,$descricao,$quantidade,$valor,$total); 
   $sql2->store_result();

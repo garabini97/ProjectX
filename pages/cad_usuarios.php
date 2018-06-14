@@ -40,15 +40,15 @@
                   <div class="form-group">
 
                      <label>Cpf</label>
-                      <input id="cpf" name="cpf" class="form-control">
+                      <input id="cpf" name="cpf" class="form-control" required>
                       <label>Nome</label>
-                      <input id="nome" name="nome" class="form-control">
+                      <input id="nome" name="nome" class="form-control" required>
                       <label>Login</label>
-                      <input id="login" name="login" class="form-control">
+                      <input id="login" name="login" class="form-control" required>
                       <label>Senha</label>
-                      <input id="senha" name="senha" class="form-control">
+                      <input id="senha" name="senha" class="form-control" required>
                       <label>Confirme a senha</label>
-                      <input id="c_senha" name="c_senha" class="form-control">
+                      <input id="c_senha" name="c_senha" class="form-control" required>
 
 
                   </div>
@@ -74,11 +74,11 @@
 
                   <div class="form-group">
                       <label>Email</label>
-                      <input id="email" name="email" class="form-control"> 
+                      <input id="email" name="email" class="form-control" required> 
                       <label>Telefone</label>
-                      <input id="telefone" name="telefone" class="form-control"> 
+                      <input id="telefone" name="telefone" class="form-control" required>  
                       <label>Celular</label>
-                      <input id="celular" name="celular" class="form-control"> 
+                      <input id="celular" name="celular" class="form-control" required> 
                       
                   </div>
                 </div>

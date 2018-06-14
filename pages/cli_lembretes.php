@@ -2,11 +2,11 @@
  include  "../processa/conecta.php";
 
 
-$id_destinatario = '11';
+
 
 
  $sql1 = $mysqli->prepare('select id,id_usuarios,descricao,data_cadastro,data_lembrete from lembretes where id_usuarios = ? limit 10');
- $sql1->bind_param('i',$id_destinatario);
+  $sql1->bind_param('i',$_SESSION['id']);
  $sql1->execute();
  $sql1->bind_result($id_lembrete,$id_usuarios,$descricao,$data_cadastro,$data_lembrete); 
  $sql1->store_result();
@@ -63,7 +63,7 @@ $id_destinatario = '11';
 
 
           </div> 
-           <input id="id_usuarios" name='combo_destinatario' type="hidden" value=<?php echo "$id_destinatario"?>>
+           <input id="id_usuarios" name='combo_destinatario' type="hidden" value=<?php echo "$_SESSION[id]"?>>
   <input id="funcao" name='funcao' type="hidden" value="cad_lembretes" >
     <div class='col-lg-12' id='resultado'></div>
      <button type="submit" id='cad_lembretes' class="btn btn-default btn-lg btn-block">Cadastrar</button>

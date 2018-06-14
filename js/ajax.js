@@ -963,6 +963,32 @@ e.preventDefault();
         });
 
     });
+                      $('#login_nat').click(function(){
+;
+        $('form#login').off();
+        $('form#login').submit(function(e){
+ 
+
+e.preventDefault();
+
+            var dados = $('form#login').serialize();
+
+            $.ajax({
+                url:'processa/login.php',
+                type:'POST',
+                dataType:'html',
+                data: dados,
+                success: function(data){
+                        
+                     $('#resultado').empty().html(data);
+                  
+                }
+            });
+
+             
+        });
+
+    });
 
 
 });
